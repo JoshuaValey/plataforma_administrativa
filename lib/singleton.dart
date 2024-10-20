@@ -15,7 +15,9 @@ class Singleton {
   static String newOperarioEndpoint = "/operario/insertar";
   static String newInsumoFijoEndpoint = "/insumofijo/insertar";
   static String newInsumoVariableEndpoint = "/insumovariable/insertar";
-  static String linkApiService = "https://profound-vigorously-cobra.ngrok-free.app";
+  static String linkApiService = "https://serviciolimpiaverde-bjb2c2g2a3gggggv.canadacentral-01.azurewebsites.net";
+  static String rutaSeleccionada = "";
+  static String proyectoSeleccionado = "";
   
   //Crear menu de pagina "Inicio""
   static double horizontalMarginLittleCards = 10.0;
@@ -46,6 +48,13 @@ class Singleton {
       'routeName': '/crear_insumo_variable_screen',
       'iconData': Icons.cleaning_services_rounded,
       'label': 'Nuevo insumo',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.inventory_2_outlined,
+      'label': 'Editar Proyecto',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },

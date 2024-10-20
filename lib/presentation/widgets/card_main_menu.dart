@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plataforma_administrativa/singleton.dart';
 
 
 
@@ -26,8 +27,15 @@ class CardMainMenu extends StatelessWidget {
             horizontal: horizontalMargin, vertical: verticalMargin),
         child: InkWell(
           onTap: () {
+              switch(label){
+                case 'Editar Proyecto':
+                  Singleton.rutaSeleccionada ="/editar_proyecto_screen";
+                break;
+                default:
+                break;
+              }
             // Navegar a la pantalla indicada
-            Navigator.pushNamed(context, routeName, arguments: id);
+            Navigator.pushNamed(context, routeName, arguments: id,);
           },
           child: Card(
             elevation: 10.0,
