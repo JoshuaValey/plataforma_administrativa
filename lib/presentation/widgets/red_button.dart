@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class GreenButton extends StatelessWidget {
+class RedButton extends StatelessWidget {
 
   
   final String label;
   final VoidCallback onPressed;
 
-  const GreenButton({super.key, required this.label, required this.onPressed});
+  const RedButton({super.key, required this.label, required this.onPressed});
 
   @override
   Widget build(BuildContext   context) {
@@ -14,7 +14,7 @@ class GreenButton extends StatelessWidget {
 final colors = Theme.of(context).colorScheme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.red,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),

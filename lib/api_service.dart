@@ -27,6 +27,14 @@ class ApiService {
     }
   }
 
+  Future<void> deleteDocument(String data, String enpointRoute) async {
+    try {
+      await _dio.delete(url+enpointRoute, data: data);
+    } catch (e) {
+      print(e);
+    }
+  }
+
     Future<List<Proyecto>> getDocuments(String enpointRoute) async {
     try {
       

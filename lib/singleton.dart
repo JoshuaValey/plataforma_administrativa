@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Singleton {
   // Instancia única de la clase
@@ -22,7 +25,77 @@ class Singleton {
   //Crear menu de pagina "Inicio""
   static double horizontalMarginLittleCards = 10.0;
   static double verticalMarginLittleCards = 10.0;
+
   List<Map<String, dynamic>> menuItems = [
+    {
+      'routeName': '/crear_operario_screen',
+      'iconData': Icons.person,
+      'label': 'Operarios',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/main_proyecto_screen',
+      'iconData': Icons.inventory_sharp,
+      'label': 'Proyectos',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+     {
+      'routeName': '/crear_insumo_fijo_screen',
+      'iconData': Icons.airport_shuttle,
+      'label': 'Insumos fijo',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/crear_insumo_variable_screen',
+      'iconData': Icons.cleaning_services_rounded,
+      'label': 'Insumos varios',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.assignment_ind,
+      'label': 'Asignaciones Monitores',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+        {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.checklist_outlined,
+      'label': 'Reportes',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+  ];
+
+  List<Map<String, dynamic>> menuItemsProyectos = [
+    {
+      'routeName': '/crear_proyecto_screen',
+      'iconData': Icons.add,
+      'label': 'Nuevo Proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.edit,
+      'label': 'Editar Proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.delete,
+      'label': 'Eliminar Proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+  ];
+
+List<Map<String, dynamic>> menuItemsCopia = [
     {
       'routeName': '/crear_operario_screen',
       'iconData': Icons.person,

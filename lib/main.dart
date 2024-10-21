@@ -5,10 +5,13 @@ import 'package:plataforma_administrativa/presentation/screens/crear_insumo_fijo
 import 'package:plataforma_administrativa/presentation/screens/crear_insumo_variable_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_operario_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_proyecto_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/eliminar_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/login_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/main_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/seleccionar_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/editar_proyecto_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/main_proyecto_screen.dart';
+
 
 
 
@@ -31,6 +34,8 @@ class MyApp extends StatelessWidget {
         '/crear_insumo_variable_screen': (context) => const CrearInsumoVariableScreen(),
         '/seleccionar_proyecto_screen': (context) => const SeleccionarProyectoScreen(),
         '/editar_proyecto_screen': (context) => const EditarProyectoScreen(),
+        '/main_proyecto_screen': (context) => const MainProyectoScreen(),
+        '/eliminar_proyecto_screen': (context) => const EliminarProyectoScreen(),
       },
       home: const LoginScreen(),
     );
