@@ -44,14 +44,14 @@ class Singleton {
      {
       'routeName': '/crear_insumo_fijo_screen',
       'iconData': Icons.airport_shuttle,
-      'label': 'Insumos fijo',
+      'label': 'Insumos fijos',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },
     {
-      'routeName': '/crear_insumo_variable_screen',
+      'routeName': '/main_insumo_variable_screen',
       'iconData': Icons.cleaning_services_rounded,
-      'label': 'Insumos varios',
+      'label': 'Insumos variables',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },
@@ -90,6 +90,30 @@ class Singleton {
       'routeName': '/seleccionar_proyecto_screen',
       'iconData': Icons.delete,
       'label': 'Eliminar Proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+  ];
+
+    List<Map<String, dynamic>> menuItemsInsumosVariables = [
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.add,
+      'label': 'Nuevo Insumo Variable',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.edit,
+      'label': 'Editar Insumo Variable',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.delete,
+      'label': 'Eliminar Insumo Variable',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },

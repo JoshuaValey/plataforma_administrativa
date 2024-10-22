@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
+import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
@@ -16,8 +17,6 @@ class _CrearInsumoVariableScreenState extends State<CrearInsumoVariableScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // Controladores para los campos del formulario
-  final _idController = TextEditingController();
-  final _idProyectoController = TextEditingController();
   final _nombreController = TextEditingController();
   final _cantidadController = TextEditingController();
 
@@ -28,6 +27,7 @@ class _CrearInsumoVariableScreenState extends State<CrearInsumoVariableScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Proyecto proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear Insumo Variable'),
@@ -38,28 +38,6 @@ class _CrearInsumoVariableScreenState extends State<CrearInsumoVariableScreen> {
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              // Campo de ID del Insumo
-              TextFormField(
-                controller: _idController,
-                decoration: const InputDecoration(labelText: 'ID del Insumo'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor ingrese el ID del insumo';
-                  }
-                  return null;
-                },
-              ),
-              // Campo de ID del Proyecto
-              TextFormField(
-                controller: _idProyectoController,
-                decoration: const InputDecoration(labelText: 'ID del Proyecto'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Por favor ingrese el ID del proyecto';
-                  }
-                  return null;
-                },
-              ),
               // Campo de Nombre
               TextFormField(
                 controller: _nombreController,
@@ -94,8 +72,7 @@ class _CrearInsumoVariableScreenState extends State<CrearInsumoVariableScreen> {
                   if (_formKey.currentState!.validate()) {
                     // Crear un nuevo insumo variable con los datos del formulario
                     InsumoVariable nuevoInsumo = InsumoVariable(
-                      id: _idController.text,
-                      idProyecto: _idProyectoController.text,
+                      idProyecto: proyecto.id,
                       nombre: _nombreController.text,
                       cantidad: int.parse(_cantidadController.text),
                       checked: _checked,
@@ -117,8 +94,6 @@ class _CrearInsumoVariableScreenState extends State<CrearInsumoVariableScreen> {
   @override
   void dispose() {
     // Limpiar los controladores cuando el widget se destruye
-    _idController.dispose();
-    _idProyectoController.dispose();
     _nombreController.dispose();
     _cantidadController.dispose();
     super.dispose();

@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_insumo_fijo_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_insumo_variable_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_operario_screen.dart';
@@ -11,6 +12,8 @@ import 'package:plataforma_administrativa/presentation/screens/main_screen.dart'
 import 'package:plataforma_administrativa/presentation/screens/seleccionar_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/editar_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/main_proyecto_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/main_insumo_variable_screen.dart';
+
 
 
 
@@ -36,6 +39,8 @@ class MyApp extends StatelessWidget {
         '/editar_proyecto_screen': (context) => const EditarProyectoScreen(),
         '/main_proyecto_screen': (context) => const MainProyectoScreen(),
         '/eliminar_proyecto_screen': (context) => const EliminarProyectoScreen(),
+        '/main_insumo_variable_screen': (context) => const MainInsumoVariableScreen(),
+
       },
       home: const LoginScreen(),
     );

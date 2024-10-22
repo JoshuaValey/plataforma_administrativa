@@ -33,6 +33,9 @@ class CardMainMenu extends StatelessWidget {
                 break;
                 case 'Eliminar Proyecto':
                   Singleton.rutaSeleccionada ="/eliminar_proyecto_screen";
+                  break;
+                case 'Nuevo Insumo Variable':
+                  Singleton.rutaSeleccionada ="/crear_insumo_variable_screen";
                 break;
                 default:
                 break;
