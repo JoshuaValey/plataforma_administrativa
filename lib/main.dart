@@ -13,7 +13,9 @@ import 'package:plataforma_administrativa/presentation/screens/seleccionar_proye
 import 'package:plataforma_administrativa/presentation/screens/editar_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/main_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/main_insumo_variable_screen.dart';
-
+import 'package:plataforma_administrativa/presentation/screens/seleccionar_insumo_variable_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/editar_insumo_variable_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/eliminar_insumo_variable_screen.dart';
 
 
 
@@ -40,7 +42,8 @@ class MyApp extends StatelessWidget {
         '/main_proyecto_screen': (context) => const MainProyectoScreen(),
         '/eliminar_proyecto_screen': (context) => const EliminarProyectoScreen(),
         '/main_insumo_variable_screen': (context) => const MainInsumoVariableScreen(),
-
+        '/seleccionar_insumo_variable_screen': (context) => const SeleccionarInusmoVariableScreen(),
+        '/eliminar_insumo_variable_screen':(context) => const EliminarInsumoVariableScreen(),
       },
       home: const LoginScreen(),
     );

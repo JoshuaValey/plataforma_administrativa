@@ -53,9 +53,9 @@ class Operario {
       nacionalidad: json['nacionalidad'] as String,
       rol: json['rol'] as String,
       sexo: json['sexo'] as String,
-      fechaNacimiento: DateTime.parse(json['fecha_nacimiento'] as String),
+      fechaNacimiento: DateTime.parse(json['fechaNacimiento'] as String),
       fechaInicioLabores:
-          DateTime.parse(json['fecha_inicio_labores'] as String),
+          DateTime.parse(json['fechaInicioLabores'] as String),
       jornada: json['jornada'] as String,
       empresa: json['empresa'] as String,
       idProyectoActual: json['id_proyecto_actual'] as String,

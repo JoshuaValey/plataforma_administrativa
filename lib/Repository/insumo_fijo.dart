@@ -29,31 +29,31 @@ class InsumoFijo {
   // Método para crear una instancia de la clase a partir de un JSON
   factory InsumoFijo.fromJson(Map<String, dynamic> json) {
     return InsumoFijo(
-      id: json['Id'] as String,
-      idProyecto: json['Id_Proyecto'] as String,
-      codigo: json['Codigo'] as String,
-      nombre: json['Nombre'] as String,
-      numero: json['Numero'] as String,
-      modelo: json['Modelo'] as String,
-      capacidad: json['Capacidad'] as String,
-      empresa: json['Empresa'] as String,
-      estado: json['Estado'] as bool,
+      id: json['id'] as String,
+      idProyecto: json['idProyecto'] as String,
+      codigo: json['codigo'] as String,
+      nombre: json['nombre'] as String,
+      numero: json['numero'] as String,
+      modelo: json['modelo'] as String,
+      capacidad: json['capacidad'] as String,
+      empresa: json['empresa'] as String,
+      estado: json['estado'] as bool,
     );
   }
 
   // Método para convertir la instancia de la clase a JSON
   Map<String, dynamic> toJson() {
     return {
-      'Id': id,
-      'Id_Proyecto': idProyecto,
-      'Codigo': codigo,
-      'Nombre': nombre,
-      'Numero': numero,
-      'Modelo': modelo,
-      'Capacidad': capacidad,
-      'Empresa': empresa,
-      'Estado': estado,
-      'Checked': checked,
+      'id': id,
+      'id_Proyecto': idProyecto,
+      'codigo': codigo,
+      'nombre': nombre,
+      'numero': numero,
+      'modelo': modelo,
+      'capacidad': capacidad,
+      'empresa': empresa,
+      'estado': estado,
+      'checked': checked,
 
     };
   }

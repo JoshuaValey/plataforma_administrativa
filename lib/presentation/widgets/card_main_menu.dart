@@ -37,6 +37,14 @@ class CardMainMenu extends StatelessWidget {
                 case 'Nuevo Insumo Variable':
                   Singleton.rutaSeleccionada ="/crear_insumo_variable_screen";
                 break;
+                case 'Editar Insumo Variable': 
+                  Singleton.rutaSeleccionada ="/seleccionar_insumo_variable_screen";
+                  Singleton.operacionSeleccionada = "/editar_insumo_variable_screen";
+                break;
+                case 'Eliminar Insumo Variable': 
+                  Singleton.rutaSeleccionada ="/seleccionar_insumo_variable_screen";
+                  Singleton.operacionSeleccionada = "/eliminar_insumo_variable_screen";
+                break;
                 default:
                 break;
               }

@@ -20,7 +20,8 @@ class Singleton {
   static String newInsumoVariableEndpoint = "/insumovariable/insertar";
   static String linkApiService = "https://serviciolimpiaverde-bjb2c2g2a3gggggv.canadacentral-01.azurewebsites.net";
   static String rutaSeleccionada = "";
-  static String proyectoSeleccionado = "";
+  static String operacionSeleccionada = "";
+  //static String proyectoSeleccionado = "";
   
   //Crear menu de pagina "Inicio""
   static double horizontalMarginLittleCards = 10.0;

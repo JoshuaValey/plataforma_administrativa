@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/Repository/proyecto.dart';
 
 
@@ -47,6 +50,25 @@ class ApiService {
       }
       else{
         throw Exception('Error al recibir el listado de proyectos');
+      }
+    
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+    Future<List<InsumoVariable>> getInsumosVariables(Proyecto data,String enpointRoute) async {
+    try {
+      
+      final response = await _dio.post(url+enpointRoute, data:data, options: Options(headers: {"Content-Type":"application/json",}));
+
+      if(response.statusCode == 200){
+        List<dynamic> body = response.data;
+        List<InsumoVariable> insumosVariables = body.map((dynamic item) => InsumoVariable.fromJson(item)).toList();
+        return insumosVariables;
+      }
+      else{
+        throw Exception('Error al recibir el listado de insumos');
       }
     
     } catch (e) {
