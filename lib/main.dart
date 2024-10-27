@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/main_insumo_variable_screen': (context) => const MainInsumoVariableScreen(),
         '/seleccionar_insumo_variable_screen': (context) => const SeleccionarInusmoVariableScreen(),
         '/eliminar_insumo_variable_screen':(context) => const EliminarInsumoVariableScreen(),
+        '/editar_insumo_variable_screen':(context) => const EditarInsumoVariableScreen(),
       },
       home: const LoginScreen(),
     );
