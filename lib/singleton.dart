@@ -43,7 +43,7 @@ class Singleton {
       'verticalMargin': verticalMarginLittleCards,
     },
      {
-      'routeName': '/crear_insumo_fijo_screen',
+      'routeName': '/main_insumo_fijo_screen',
       'iconData': Icons.airport_shuttle,
       'label': 'Insumos fijos',
       'horizontalMargin': horizontalMarginLittleCards,
@@ -153,6 +153,30 @@ List<Map<String, dynamic>> menuItemsCopia = [
       'routeName': '/seleccionar_proyecto_screen',
       'iconData': Icons.inventory_2_outlined,
       'label': 'Editar Proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+  ];
+  
+  List<Map<String, dynamic>> menuItemsInsumosFijos = [
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.add,
+      'label': 'Nuevo Insumo Fijo',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.edit,
+      'label': 'Editar Insumo Fijo',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.delete,
+      'label': 'Eliminar Insumo Fijo',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },

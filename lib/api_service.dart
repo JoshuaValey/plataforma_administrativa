@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
+import 'package:plataforma_administrativa/Repository/insumo_fijo.dart';
 import 'package:plataforma_administrativa/Repository/proyecto.dart';
 
 
@@ -66,6 +67,25 @@ class ApiService {
         List<dynamic> body = response.data;
         List<InsumoVariable> insumosVariables = body.map((dynamic item) => InsumoVariable.fromJson(item)).toList();
         return insumosVariables;
+      }
+      else{
+        throw Exception('Error al recibir el listado de insumos');
+      }
+    
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<List<InsumoFijo>> getInsumosFijos(Proyecto data,String enpointRoute) async {
+    try {
+      
+      final response = await _dio.post(url+enpointRoute, data:data, options: Options(headers: {"Content-Type":"application/json",}));
+
+      if(response.statusCode == 200){
+        List<dynamic> body = response.data;
+        List<InsumoFijo> insumosFijos = body.map((dynamic item) => InsumoFijo.fromJson(item)).toList();
+        return insumosFijos;
       }
       else{
         throw Exception('Error al recibir el listado de insumos');

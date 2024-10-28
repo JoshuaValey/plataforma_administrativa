@@ -1,7 +1,7 @@
 
 class InsumoFijo {
   final String? id ;
-  final String idProyecto;
+  final String? idProyecto;
   final String codigo;
   final String nombre;
   final String? numero;
@@ -45,7 +45,7 @@ class InsumoFijo {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'id_Proyecto': idProyecto,
+      'IdProyecto': idProyecto,
       'codigo': codigo,
       'nombre': nombre,
       'numero': numero,
