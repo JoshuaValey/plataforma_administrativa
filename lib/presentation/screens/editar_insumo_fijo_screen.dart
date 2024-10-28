@@ -6,14 +6,14 @@ import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
-class CrearInsumoFijoScreen extends StatefulWidget {
-  const CrearInsumoFijoScreen({super.key});
+class EditarInsumoFijoScreen extends StatefulWidget {
+  const EditarInsumoFijoScreen({super.key});
 
   @override
-  State<CrearInsumoFijoScreen> createState() => _CrearInsumoFijoScreenState();
+  State<EditarInsumoFijoScreen> createState() => _EditarInsumoFijoScreenState();
 }
 
-class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
+class _EditarInsumoFijoScreenState extends State<EditarInsumoFijoScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // Controladores para los campos del formulario
@@ -24,17 +24,23 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
   final _capacidadController = TextEditingController();
   final _empresaController = TextEditingController();
   bool _estado = false;  // Estado del insumo (activo/inactivo)
-  final bool _checked = false; // Campo booleano para "checked"
 
   // Instancia de api service
   ApiService apiService = ApiService(url: Singleton.linkApiService);
 
   @override
   Widget build(BuildContext context) {
-    Proyecto proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
+    InsumoFijo insumoFijo = ModalRoute.of(context)!.settings.arguments as InsumoFijo;
+    _codigoController.text = insumoFijo.codigo;
+    _nombreController.text = insumoFijo.nombre;
+    _numeroController.text = insumoFijo.numero ?? "";
+    _modeloController.text = insumoFijo.modelo ?? "";
+    _capacidadController.text = insumoFijo.capacidad ?? "";
+    _empresaController.text = insumoFijo.empresa;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Crear Insumo Fijo'),
+        title: const Text('Editar Insumo Fijo'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -110,9 +116,10 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Crear un nuevo insumo fijo con los datos del formulario
-                    InsumoFijo nuevoInsumo = InsumoFijo(
-                      idProyecto: proyecto.id,
+                    // Editar un nuevo insumo fijo con los datos del formulario
+                      InsumoFijo insumoEditado = InsumoFijo(
+                      id: insumoFijo.id,
+                      idProyecto: insumoFijo.idProyecto,
                       codigo: _codigoController.text,
                       nombre: _nombreController.text,
                       numero: _numeroController.text,
@@ -120,11 +127,10 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
                       capacidad: _capacidadController.text,
                       empresa: _empresaController.text,
                       estado: _estado,
-                      checked: _checked,
                     );
                     // API 
-                    apiService.insertDocument(jsonEncode(nuevoInsumo.toJson()), '/insumofijo/insertar');
-                    print('Nuevo insumo creado: ${nuevoInsumo.nombre}');
+                    apiService.updateDocument(jsonEncode(insumoEditado.toJson()), '/insumofijo/editar');
+                    print('Insumo editado: ${insumoEditado.nombre}');
                   }
                 },
                 child: const Text('Guardar'),

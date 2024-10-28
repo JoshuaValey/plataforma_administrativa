@@ -45,6 +45,17 @@ class CardMainMenu extends StatelessWidget {
                   Singleton.rutaSeleccionada ="/seleccionar_insumo_variable_screen";
                   Singleton.operacionSeleccionada = "/eliminar_insumo_variable_screen";
                 break;
+                case 'Nuevo Insumo Fijo':
+                  Singleton.rutaSeleccionada ="/crear_insumo_fijo_screen";
+                break;
+                case 'Editar Insumo Fijo': 
+                  Singleton.rutaSeleccionada ="/seleccionar_insumo_fijo_screen";
+                  Singleton.operacionSeleccionada = "/editar_insumo_fijo_screen";
+                break;
+                case 'Eliminar Insumo Fijo': 
+                  Singleton.rutaSeleccionada ="/seleccionar_insumo_fijo_screen";
+                  Singleton.operacionSeleccionada = "/eliminar_insumo_fijo_screen";
+                break;
                 default:
                 break;
               }
