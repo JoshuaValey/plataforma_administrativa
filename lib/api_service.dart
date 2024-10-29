@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/Repository/insumo_fijo.dart';
 import 'package:plataforma_administrativa/Repository/proyecto.dart';
+import 'package:plataforma_administrativa/Repository/usuario.dart';
 
 
 
@@ -89,6 +90,25 @@ class ApiService {
       }
       else{
         throw Exception('Error al recibir el listado de insumos');
+      }
+    
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+      Future<List<Usuario>> getUsuarios(String enpointRoute) async {
+    try {
+      
+      final response = await _dio.get(url+enpointRoute);
+
+      if(response.statusCode == 200){
+        List<dynamic> body = response.data;
+        List<Usuario> usuarios = body.map((dynamic item) => Usuario.fromJson(item)).toList();
+        return usuarios;
+      }
+      else{
+        throw Exception('Error al recibir el listado de usuarios');
       }
     
     } catch (e) {

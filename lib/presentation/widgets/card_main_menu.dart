@@ -56,6 +56,10 @@ class CardMainMenu extends StatelessWidget {
                   Singleton.rutaSeleccionada ="/seleccionar_insumo_fijo_screen";
                   Singleton.operacionSeleccionada = "/eliminar_insumo_fijo_screen";
                 break;
+                case 'Asignar usuario a proyecto': 
+                  Singleton.rutaSeleccionada ="/seleccionar_usuario_screen";
+                  Singleton.operacionSeleccionada = "/crear_asignacion_screen";
+                break;
                 default:
                 break;
               }

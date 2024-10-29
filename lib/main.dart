@@ -20,6 +20,11 @@ import 'package:plataforma_administrativa/presentation/screens/main_insumo_fijo_
 import 'package:plataforma_administrativa/presentation/screens/seleccionar_insumo_fijo_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/editar_insumo_fijo_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/eliminar_insumo_fijo_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/seleccionar_usuario_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/main_asignaciones_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/crear_asignacion_screen.dart';
+
+
 
 
 
@@ -52,6 +57,10 @@ class MyApp extends StatelessWidget {
         '/seleccionar_insumo_fijo_screen': (context) => const SeleccionarInsumoFijoScreen(),
         '/editar_insumo_fijo_screen':(context) => const EditarInsumoFijoScreen(),
         '/eliminar_insumo_fijo_screen':(context) => const EliminarInsumoFijoScreen(),
+        '/seleccionar_usuario_screen':(context) => const SeleccionarUsuarioScreen(),
+        '/main_asignaciones_screen': (context) => const MainAsignacionesScreen(),
+        '/crear_asignacion_screen': (context) => const CrearAsignacionScreen(),
+
       },
       home: const LoginScreen(),
     );

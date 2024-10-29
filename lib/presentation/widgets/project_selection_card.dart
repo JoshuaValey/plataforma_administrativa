@@ -16,6 +16,7 @@ class ProjectSelectionCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
       child: InkWell(
         onTap: () {
+          Singleton.proyectoSeleccionado=proyecto.id;
           Navigator.pushNamed(context, Singleton.rutaSeleccionada, arguments: proyecto);
         },
         child: Card(

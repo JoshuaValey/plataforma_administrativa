@@ -21,7 +21,7 @@ class Singleton {
   static String linkApiService = "https://serviciolimpiaverde-bjb2c2g2a3gggggv.canadacentral-01.azurewebsites.net";
   static String rutaSeleccionada = "";
   static String operacionSeleccionada = "";
-  //static String proyectoSeleccionado = "";
+  static String? proyectoSeleccionado = "";
   
   //Crear menu de pagina "Inicio""
   static double horizontalMarginLittleCards = 10.0;
@@ -57,7 +57,7 @@ class Singleton {
       'verticalMargin': verticalMarginLittleCards,
     },
     {
-      'routeName': '/seleccionar_proyecto_screen',
+      'routeName': '/main_asignaciones_screen',
       'iconData': Icons.assignment_ind,
       'label': 'Asignaciones Monitores',
       'horizontalMargin': horizontalMarginLittleCards,
@@ -181,5 +181,21 @@ List<Map<String, dynamic>> menuItemsCopia = [
       'verticalMargin': verticalMarginLittleCards,
     },
   ];
-  
+
+  List<Map<String, dynamic>> menuItemsAsignaciones = [
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.add,
+      'label': 'Asignar usuario a proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.edit,
+      'label': 'Desasignar usuario a proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+  ];
   }
