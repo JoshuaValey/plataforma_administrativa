@@ -64,12 +64,13 @@ class Singleton {
       'verticalMargin': verticalMarginLittleCards,
     },
         {
-      'routeName': '/seleccionar_proyecto_screen',
+      'routeName': '/reporte_screen',
       'iconData': Icons.checklist_outlined,
       'label': 'Reportes',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },
+   
   ];
 
   List<Map<String, dynamic>> menuItemsProyectos = [
