@@ -7,6 +7,7 @@ import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/Repository/usuario.dart';
 
 
+import 'package:plataforma_administrativa/Repository/reporte.dart';
 
 class ApiService {
   final String url;
@@ -14,11 +15,10 @@ class ApiService {
 
   ApiService({required this.url});
 
-
-  //usar dio para un método post que mande a la api un json para insertar datos, no traer. 
+  //usar dio para un método post que mande a la api un json para insertar datos, no traer.
   Future<void> insertDocument(String data, String enpointRoute) async {
     try {
-      await _dio.post(url+enpointRoute, data: data);
+      await _dio.post(url + enpointRoute, data: data);
     } catch (e) {
       print(e);
     }
@@ -26,7 +26,7 @@ class ApiService {
 
   Future<void> updateDocument(String data, String enpointRoute) async {
     try {
-      await _dio.put(url+enpointRoute, data: data);
+      await _dio.put(url + enpointRoute, data: data);
     } catch (e) {
       print(e);
     }
@@ -34,45 +34,46 @@ class ApiService {
 
   Future<void> deleteDocument(String data, String enpointRoute) async {
     try {
-      await _dio.delete(url+enpointRoute, data: data);
+      await _dio.delete(url + enpointRoute, data: data);
     } catch (e) {
       print(e);
     }
   }
 
-    Future<List<Proyecto>> getDocuments(String enpointRoute) async {
+  Future<List<Proyecto>> getDocuments(String enpointRoute) async {
     try {
-      
-      final response = await _dio.get(url+enpointRoute);
+      final response = await _dio.get(url + enpointRoute);
 
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         List<dynamic> body = response.data;
-        List<Proyecto> proyectos = body.map((dynamic item) => Proyecto.fromJson(item)).toList();
+        List<Proyecto> proyectos =
+            body.map((dynamic item) => Proyecto.fromJson(item)).toList();
         return proyectos;
-      }
-      else{
+      } else {
         throw Exception('Error al recibir el listado de proyectos');
       }
-    
     } catch (e) {
       throw Exception(e);
     }
   }
 
-    Future<List<InsumoVariable>> getInsumosVariables(Proyecto data,String enpointRoute) async {
+  Future<List<InsumoVariable>> getInsumosVariables(
+      Proyecto data, String enpointRoute) async {
     try {
-      
-      final response = await _dio.post(url+enpointRoute, data:data, options: Options(headers: {"Content-Type":"application/json",}));
+      final response = await _dio.post(url + enpointRoute,
+          data: data,
+          options: Options(headers: {
+            "Content-Type": "application/json",
+          }));
 
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         List<dynamic> body = response.data;
-        List<InsumoVariable> insumosVariables = body.map((dynamic item) => InsumoVariable.fromJson(item)).toList();
+        List<InsumoVariable> insumosVariables =
+            body.map((dynamic item) => InsumoVariable.fromJson(item)).toList();
         return insumosVariables;
-      }
-      else{
+      } else {
         throw Exception('Error al recibir el listado de insumos');
       }
-    
     } catch (e) {
       throw Exception(e);
     }
@@ -92,6 +93,32 @@ class ApiService {
         throw Exception('Error al recibir el listado de insumos');
       }
     
+
+}
+catch (e) {
+      throw Exception(e);
+    }
+
+  }
+  
+    // Traer todos los
+  Future<List<Reporte>> getReportesCompletos() async {
+    //Dame el codigo de una peticion post
+    try {
+      final response =
+          await _dio.post('$url/reporte/listadocompleto?cantidad=0',
+              data: null,
+              options: Options(headers: {
+                "Content-Type": "application/json",
+              }));
+      if (response.statusCode == 200) {
+        List<dynamic> body = response.data;
+        List<Reporte> reportes =
+            body.map((dynamic item) => Reporte.fromJson(item)).toList();
+        return reportes;
+      } else {
+        throw Exception('Error al recibir el listado de reportes');
+      }
     } catch (e) {
       throw Exception(e);
     }
@@ -117,4 +144,25 @@ class ApiService {
   }
 
 
-}
+  Future<List<Reporte>> getReporteFiltrado(ReporteFiltro data) async {
+    try {
+      final response = await _dio.post('$url/reporte/listadolimitado',
+          data: jsonEncode(data.toJson()),
+          options: Options(headers: {
+            "Content-Type": "application/json",
+          }));
+      if (response.statusCode == 200) {
+        List<dynamic> body = response.data;
+        List<Reporte> reportes =
+            body.map((dynamic item) => Reporte.fromJson(item)).toList();
+        return reportes;
+      } else {
+        throw Exception('Error al recibir el listado de reportes');
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+  
+  
+  }

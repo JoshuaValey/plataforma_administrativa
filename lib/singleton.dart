@@ -64,12 +64,13 @@ class Singleton {
       'verticalMargin': verticalMarginLittleCards,
     },
         {
-      'routeName': '/seleccionar_proyecto_screen',
+      'routeName': '/reporte_screen',
       'iconData': Icons.checklist_outlined,
       'label': 'Reportes',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },
+   
   ];
 
   List<Map<String, dynamic>> menuItemsProyectos = [
@@ -190,12 +191,12 @@ List<Map<String, dynamic>> menuItemsCopia = [
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },
-    {
+   /* {
       'routeName': '/seleccionar_proyecto_screen',
       'iconData': Icons.edit,
       'label': 'Desasignar usuario a proyecto',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
-    },
+    },*/
   ];
   }
