@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
-import 'package:plataforma_administrativa/presentation/widgets/green_button.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
 class SeleccionarInusmoVariableScreen extends StatefulWidget {

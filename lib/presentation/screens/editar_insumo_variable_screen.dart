@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
-import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
@@ -20,7 +19,6 @@ class _EditarInsumoVariableScreen extends State<EditarInsumoVariableScreen> {
   final _nombreController = TextEditingController();
   final _cantidadController = TextEditingController();
 
-  final bool _checked = false; // Campo booleano para "checked"
 
   // Instancia de api service
   ApiService apiService = ApiService(url: Singleton.linkApiService);

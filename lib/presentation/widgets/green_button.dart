@@ -11,7 +11,6 @@ class GreenButton extends StatelessWidget {
   @override
   Widget build(BuildContext   context) {
 
-final colors = Theme.of(context).colorScheme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,

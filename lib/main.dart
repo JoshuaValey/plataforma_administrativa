@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_insumo_fijo_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_insumo_variable_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_operario_screen.dart';
