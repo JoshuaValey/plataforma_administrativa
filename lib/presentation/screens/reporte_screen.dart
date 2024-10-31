@@ -160,23 +160,30 @@ class _ReporteScreenState extends State<ReporteScreen> {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 16.0),
-                    elevation: 4.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                  return InkWell(
+                    onTap: () {
+                      // Aquí puedes manejar el evento de tap en el item
+                      Navigator.pushNamed(context, '/reporte_detalle_screen',
+                          arguments: snapshot.data![index]);
+                    },
+                    child: Card(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 16.0),
+                      elevation: 4.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: ListTile(
+                          title: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(snapshot.data?[index].empresa.toString() ?? ''),
+                          Text(DateFormat('yyy-MM-dd')
+                              .format(snapshot.data![index].fechaReporte)),
+                        ],
+                      )),
                     ),
-                    child: ListTile(
-                        title: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(snapshot.data?[index].empresa.toString() ?? ''),
-                        Text(DateFormat('yyy-MM-dd')
-                            .format(snapshot.data![index].fechaReporte)),
-                      ],
-                    )),
                   );
                 },
               );

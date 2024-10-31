@@ -8,6 +8,7 @@ import 'package:plataforma_administrativa/presentation/screens/crear_proyecto_sc
 import 'package:plataforma_administrativa/presentation/screens/eliminar_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/login_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/main_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/reporte_detalle_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/reporte_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/seleccionar_proyecto_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/editar_proyecto_screen.dart';
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
         '/seleccionar_usuario_screen':(context) => const SeleccionarUsuarioScreen(),
         '/main_asignaciones_screen': (context) => const MainAsignacionesScreen(),
         '/crear_asignacion_screen': (context) => const CrearAsignacionScreen(),
+        '/reporte_detalle_screen': (context) => const  ReporteDetalleScreen(),
 
       },
       home: const LoginScreen(),
