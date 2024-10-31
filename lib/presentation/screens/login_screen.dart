@@ -19,8 +19,12 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  
-                  const SizedBox(height: 300),
+                  const Image(
+                    image: AssetImage('assets/lyv.png'),
+                    height: 300,
+                    width: 300,
+                  ),
+                  const SizedBox(height: 50),
                   ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: const TextField(
