@@ -13,7 +13,7 @@ class ReporteScreen extends StatefulWidget {
 
 class _ReporteScreenState extends State<ReporteScreen> {
   ApiService service = ApiService(url: Singleton.linkApiService);
-  ReporteFiltro reporteFiltro = ReporteFiltro();
+  ReporteFiltro? reporteFiltro = ReporteFiltro();
 
   Future<List<Reporte>>? _futureReportesFull;
 
@@ -193,7 +193,9 @@ class _ReporteScreenState extends State<ReporteScreen> {
               String? result = await _showProyectosFilterDialog();
               if (result != null) {
                 print('Filtro 1: $result');
+                reporteFiltro!.proyectoId = result;
                 // Aquí puedes manejar el valor retornado
+                _ferchReportesFiltrados(reporteFiltro!);
               }
             },
             tooltip: 'Filtro 1',
@@ -207,6 +209,8 @@ class _ReporteScreenState extends State<ReporteScreen> {
               if (result != null) {
                 print('Filtro 2: $result');
                 // Aquí puedes manejar el valor retornado
+                reporteFiltro!.fechaReporte = DateTime.parse(result);
+                _ferchReportesFiltrados(reporteFiltro!);
               }
             },
             tooltip: 'Filtro 2',

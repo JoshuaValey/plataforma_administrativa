@@ -192,6 +192,29 @@ class ReporteFiltro {
     this.inspectorId,
   });
 
+void setFechaReporte(DateTime fechaReporte) {
+    this.fechaReporte = fechaReporte;
+  }
+
+  DateTime getFechaReporte() {
+    return fechaReporte!;
+  }
+
+  void setProyectoId(String proyectoId) {
+    this.proyectoId = proyectoId;
+  }
+
+  String getProyectoId() {
+    return proyectoId!;
+  }
+
+  void setInspectorId(String inspectorId) {
+    this.inspectorId = inspectorId;
+  }
+
+  String getInspectorId() {
+    return inspectorId!;
+}
   
 
   factory ReporteFiltro.fromJson(Map<String, dynamic> json) {
