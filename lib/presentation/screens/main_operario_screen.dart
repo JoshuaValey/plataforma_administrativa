@@ -3,8 +3,8 @@ import 'package:plataforma_administrativa/presentation/widgets/card_main_menu.da
 import 'package:plataforma_administrativa/singleton.dart';
 
 
-class MainInsumoFijoScreen extends StatelessWidget {
-  const MainInsumoFijoScreen({super.key});
+class MainOperarioScreen extends StatelessWidget {
+  const MainOperarioScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +18,7 @@ class MainInsumoFijoScreen extends StatelessWidget {
             mainAxisSpacing: 8,
             //physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            children: Singleton.instance.menuItemsInsumosFijos.map((element) {
+            children: Singleton.instance.menuItemsOperarios.map((element) {
               return CardMainMenu(
                 routeName: element['routeName'],
                 iconData: element['iconData'],

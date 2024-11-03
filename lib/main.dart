@@ -24,6 +24,14 @@ import 'package:plataforma_administrativa/presentation/screens/eliminar_insumo_f
 import 'package:plataforma_administrativa/presentation/screens/seleccionar_usuario_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/main_asignaciones_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_asignacion_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/main_operario_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/seleccionar_operario_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/editar_operario_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/eliminar_operario_screen.dart';
+
+
+
+
 
 
 
@@ -63,6 +71,10 @@ class MyApp extends StatelessWidget {
         '/main_asignaciones_screen': (context) => const MainAsignacionesScreen(),
         '/crear_asignacion_screen': (context) => const CrearAsignacionScreen(),
         '/reporte_detalle_screen': (context) => const  ReporteDetalleScreen(),
+        '/main_operario_screen': (context) => const MainOperarioScreen(),
+        '/seleccionar_operario_screen': (context) => const SeleccionarOperarioScreen(),
+        '/editar_operario_screen': (context) => const EditarOperarioScreen(),
+        '/eliminar_operario_screen': (context) => const EliminarOperarioScreen(),
 
       },
       home: const LoginScreen(),

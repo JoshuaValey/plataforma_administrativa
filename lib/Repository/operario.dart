@@ -11,7 +11,7 @@ class Operario {
   final DateTime fechaInicioLabores;
   final String jornada;
   final String empresa;
-  String idProyectoActual;
+  final String? idProyectoActual;
   bool? isChecked;
 
   @override
@@ -58,7 +58,8 @@ class Operario {
           DateTime.parse(json['fechaInicioLabores'] as String),
       jornada: json['jornada'] as String,
       empresa: json['empresa'] as String,
-      idProyectoActual: json['id_proyecto_actual'] as String,
+      idProyectoActual: json['idProyectoActual'] as String,
+      isChecked: json['isChecked'] as bool
     );
   }
 
@@ -75,7 +76,8 @@ class Operario {
       'empresa': empresa,
       'fecha_nacimiento': fechaNacimiento.toIso8601String(),
       'fecha_inicio_labores': fechaInicioLabores.toIso8601String(),
-      'id_proyecto_actual': idProyectoActual
+      'idProyectoActual': idProyectoActual,
+      'isChecked' : isChecked,
     };
   }
 }

@@ -8,14 +8,14 @@ import 'package:plataforma_administrativa/singleton.dart';
 
 
 
-class CrearOperarioScreen extends StatefulWidget {
-  const CrearOperarioScreen({super.key});
+class EditarOperarioScreen extends StatefulWidget {
+  const EditarOperarioScreen({super.key});
 
   @override
-  State<CrearOperarioScreen> createState() => _CrearOperarioScreenState();
+  State<EditarOperarioScreen> createState() => _EditarOperarioScreen();
 }
 
-class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
+class _EditarOperarioScreen extends State<EditarOperarioScreen> {
   final _formKey = GlobalKey<FormState>();
   final _documentoController = TextEditingController();
   final _nombresController = TextEditingController();
@@ -25,13 +25,12 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
   final _sexoController = TextEditingController();
   final _jornadaController = TextEditingController();
   final _empresaController = TextEditingController();
+  final _idProyectoActualController = TextEditingController();
   final _fechaNacimientoController = TextEditingController();
   final _fechaInicioLaboresController = TextEditingController();
-  final _idProyectoActualController = TextEditingController();
 
   DateTime? _fechaNacimiento;
   DateTime? _fechaInicioLabores;
-  bool _isChecked = false; // Para indicar si el operario está activo
 
   // Instancia de api service. 
 
@@ -52,11 +51,32 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
 
   @override
   Widget build(BuildContext context) {
-      Proyecto proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
+
+  Operario operario = ModalRoute.of(context)!.settings.arguments as Operario;
+  _documentoController.text = operario.documentoIdentificacion;
+  _nombresController.text = operario.nombres;
+  _apellidosController.text = operario.apellidos;
+  _nacionalidadController.text = operario.nacionalidad;
+  _rolController.text = operario.rol;
+  _sexoController.text = operario.sexo;
+  _jornadaController.text = operario.jornada;
+  _empresaController.text = operario.empresa;
+  setState(() {
+    _fechaInicioLaboresController.text = operario.fechaInicioLabores.toString().replaceAll('Z', '');
+    _fechaInicioLabores = DateTime.parse(operario.fechaInicioLabores.toString().replaceAll('Z', ''));
+  });
+  setState(() {
+    _fechaNacimientoController.text = operario.fechaNacimiento.toString().replaceAll('Z', '');
+    _fechaNacimiento = DateTime.parse(operario.fechaNacimiento.toString().replaceAll('Z', ''));
+  });
+  //_fechaFinController.text = proyectoViejo.fechaFin.toString().replaceAll('Z', '');
+  _jornadaController.text = operario.jornada;
+  bool? isChecked = operario.isChecked; // Para indicar si el operario está activo
+
       
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Crear Operario'),
+        title: const Text('Editar Operario'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -202,10 +222,10 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
                 children: [
                   const Text('Activo'),
                   Checkbox(
-                    value: _isChecked,
+                    value: isChecked,
                     onChanged: (bool? newValue) {
                       setState(() {
-                        _isChecked = newValue ?? false;
+                        isChecked = newValue ?? false;
                       });
                     },
                   ),
@@ -216,6 +236,7 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Operario nuevoOperario = Operario(
+                      id: operario.id,
                       documentoIdentificacion: _documentoController.text,
                       nombres: _nombresController.text,
                       apellidos: _apellidosController.text,
@@ -226,11 +247,11 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
                       fechaInicioLabores: _fechaInicioLabores!,
                       jornada: _jornadaController.text,
                       empresa: _empresaController.text,
-                      idProyectoActual: proyecto.id,
-                      isChecked: _isChecked,
+                      idProyectoActual: operario.idProyectoActual,
+                      isChecked: isChecked,
                     );
                     // Aquí implementar API
-                    apiService.insertDocument(jsonEncode(nuevoOperario.toJson()), '/operario/insertar');
+                    apiService.updateDocument(jsonEncode(nuevoOperario.toJson()), '/operario/editar');
                     print('Nuevo operario creado: ${nuevoOperario.nombres}');
                   }
                 },

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/Repository/insumo_fijo.dart';
+import 'package:plataforma_administrativa/Repository/operario.dart';
 import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/Repository/usuario.dart';
 
@@ -164,5 +165,28 @@ catch (e) {
     }
   }
   
+
+  Future<List<Operario>> getOperarios(
+      Proyecto data, String enpointRoute) async {
+    try {
+      final response = await _dio.post(url + enpointRoute,
+          data: data,
+          options: Options(headers: {
+            "Content-Type": "application/json",
+          }));
+
+      if (response.statusCode == 200) {
+        List<dynamic> body = response.data;
+        List<Operario> operarios =
+            body.map((dynamic item) => Operario.fromJson(item)).toList();
+        return operarios;
+      } else {
+        throw Exception('Error al recibir el listado de insumos');
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
   
   }

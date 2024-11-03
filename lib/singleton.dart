@@ -28,7 +28,7 @@ class Singleton {
 
   List<Map<String, dynamic>> menuItems = [
     {
-      'routeName': '/crear_operario_screen',
+      'routeName': '/main_operario_screen',
       'iconData': Icons.person,
       'label': 'Operarios',
       'horizontalMargin': horizontalMarginLittleCards,
@@ -177,6 +177,30 @@ List<Map<String, dynamic>> menuItemsCopia = [
       'routeName': '/seleccionar_proyecto_screen',
       'iconData': Icons.delete,
       'label': 'Eliminar Insumo Fijo',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+  ];
+
+  List<Map<String, dynamic>> menuItemsOperarios = [
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.add,
+      'label': 'Nuevo Operario',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.edit,
+      'label': 'Editar Operario',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
+      'routeName': '/seleccionar_proyecto_screen',
+      'iconData': Icons.delete,
+      'label': 'Eliminar Operario',
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },
