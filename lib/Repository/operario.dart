@@ -12,7 +12,7 @@ class Operario {
   final String jornada;
   final String empresa;
   final String? idProyectoActual;
-  bool? isChecked;
+  bool isChecked;
 
   @override
   String toString() =>
@@ -41,7 +41,7 @@ class Operario {
       required this.fechaNacimiento,
       required this.fechaInicioLabores,
       required this.idProyectoActual,
-      this.isChecked = false});
+      required this.isChecked});
 
 // vuelve ha crear el meetodo fromjson
   factory Operario.fromJson(Map<String, dynamic> json) {
@@ -55,8 +55,7 @@ class Operario {
       sexo: json['sexo'] as String,
       fechaNacimiento: DateTime.parse(json['fechaNacimiento'] as String),
       fechaInicioLabores:
-          DateTime.parse(json['fechaInicioLabores'] as String),
-      jornada: json['jornada'] as String,
+          DateTime.parse(json['fechaInicioLabores'] as String), jornada: json['jornada'] as String,
       empresa: json['empresa'] as String,
       idProyectoActual: json['idProyectoActual'] as String,
       isChecked: json['isChecked'] as bool
@@ -74,8 +73,8 @@ class Operario {
       'sexo': sexo,
       'jornada': jornada,
       'empresa': empresa,
-      'fecha_nacimiento': fechaNacimiento.toIso8601String(),
-      'fecha_inicio_labores': fechaInicioLabores.toIso8601String(),
+      'fechaNacimiento': fechaNacimiento.toIso8601String(),
+      'fechaInicioLabores': fechaInicioLabores.toIso8601String(),
       'idProyectoActual': idProyectoActual,
       'isChecked' : isChecked,
     };
