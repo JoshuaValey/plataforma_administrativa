@@ -24,13 +24,28 @@ class _EditarProyectoScreenState extends State<EditarProyectoScreen> {
 
   DateTime? _fechaInicio;
   DateTime? _fechaFin;
-
-  
-
-
-  // Nueva variable para almacenar el estado del checkbox
   bool _vigente = false;
 
+@override
+void initState() {
+  super.initState();
+    // Obtener los datos del proyecto pasado por argumentos
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Proyecto proyectoViejo = ModalRoute.of(context)!.settings.arguments as Proyecto;
+
+      // Asignación inicial de los valores a los controladores y variables
+      _nameController.text = proyectoViejo.name;
+      _descripcionController.text = proyectoViejo.descripcion;
+      _areaCoberturaController.text = proyectoViejo.areaCobertura;
+      _empresaController.text = proyectoViejo.empresa;
+      _fechaInicio = DateTime.parse(proyectoViejo.fechaInicio.toString().replaceAll('Z', ''));
+      _fechaInicioController.text = _fechaInicio.toString(); // Puedes formatear esto para mejor presentación
+      _fechaFin = DateTime.parse(proyectoViejo.fechaFin.toString().replaceAll('Z', ''));
+      _fechaFinController.text = _fechaFin.toString(); // Puedes formatear esto también
+      _jornadaController.text = proyectoViejo.areaCobertura;
+      _vigente = proyectoViejo.vigente; // Asignar el valor del checkbox
+    });
+}
   
 
   @override
@@ -38,22 +53,7 @@ class _EditarProyectoScreenState extends State<EditarProyectoScreen> {
   
   ApiService apiService = ApiService(url: Singleton.linkApiService);
   Proyecto proyectoViejo = ModalRoute.of(context)!.settings.arguments as Proyecto;
-  _nameController.text = proyectoViejo.name;
-  _descripcionController.text = proyectoViejo.descripcion;
-  _areaCoberturaController.text = proyectoViejo.areaCobertura;
-  _empresaController.text = proyectoViejo.empresa;
-  setState(() {
-    _fechaInicioController.text = proyectoViejo.fechaInicio.toString().replaceAll('Z', '');
-    _fechaInicio = DateTime.parse(proyectoViejo.fechaInicio.toString().replaceAll('Z', ''));
-  });
-  setState(() {
-    _fechaFinController.text = proyectoViejo.fechaFin.toString().replaceAll('Z', '');
-    _fechaFin = DateTime.parse(proyectoViejo.fechaFin.toString().replaceAll('Z', ''));
-  });
-  //_fechaFinController.text = proyectoViejo.fechaFin.toString().replaceAll('Z', '');
-  _jornadaController.text = proyectoViejo.areaCobertura;
-
-
+ 
 
     return Scaffold(
       appBar: AppBar(
