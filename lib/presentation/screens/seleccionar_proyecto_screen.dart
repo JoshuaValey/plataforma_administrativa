@@ -53,17 +53,17 @@ class _SeleccionarProyectoScreenState extends State<SeleccionarProyectoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/main_screen');
-        },
-        backgroundColor: Colors.green,
-        shape: const CircleBorder(),
-        child: const Icon(Icons.home, color: Colors.white),
-      ),
+      
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: const Text('Seleccion de Proyecto'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: SafeArea(
         child: Padding(

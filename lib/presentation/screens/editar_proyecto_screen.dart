@@ -58,6 +58,13 @@ void initState() {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Editar Proyecto'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

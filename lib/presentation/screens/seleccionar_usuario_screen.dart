@@ -29,6 +29,13 @@ List<Usuario>? usuarios;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Monitores"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: FutureBuilder<List<Usuario>>(

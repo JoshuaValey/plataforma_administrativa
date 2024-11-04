@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Singleton {
   // Instancia única de la clase
@@ -222,4 +223,16 @@ List<Map<String, dynamic>> menuItemsCopia = [
       'verticalMargin': verticalMarginLittleCards,
     },*/
   ];
+
+ static void showToast(String msg) {
+    Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.grey,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
   }

@@ -35,6 +35,13 @@ List<InsumoFijo>? insumosFijos;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Insumos fijos"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: FutureBuilder<List<InsumoFijo>>(

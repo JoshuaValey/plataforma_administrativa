@@ -27,6 +27,13 @@ class _CrearAsignacionScreen extends State<CrearAsignacionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Asignar usuario a proyecto'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Center(
         child: Column(

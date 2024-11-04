@@ -10,6 +10,13 @@ class MainInsumoVariableScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Proyectos'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Center(
         child: GridView.count(

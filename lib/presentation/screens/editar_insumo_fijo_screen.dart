@@ -55,6 +55,13 @@ class _EditarInsumoFijoScreenState extends State<EditarInsumoFijoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Editar Insumo Fijo'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -26,6 +26,13 @@ class _EliminarOperarioScreen extends State<EliminarOperarioScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
         title: const Text('Eliminar Operario'),
       ),
       body: Center(

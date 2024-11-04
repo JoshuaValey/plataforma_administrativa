@@ -35,6 +35,13 @@ List<Operario>? operarios;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Operarios"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: FutureBuilder<List<Operario>>(

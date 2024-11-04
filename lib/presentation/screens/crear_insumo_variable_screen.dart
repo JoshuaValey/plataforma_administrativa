@@ -31,6 +31,13 @@ class _CrearInsumoVariableScreenState extends State<CrearInsumoVariableScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear Insumo Variable'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -79,7 +86,12 @@ class _CrearInsumoVariableScreenState extends State<CrearInsumoVariableScreen> {
                     );
                     // API 
                     apiService.insertDocument(jsonEncode(nuevoInsumo.toJson()), '/insumovariable/insertar');
-                    print('Nuevo insumo creado: ${nuevoInsumo.nombre}');
+                    Singleton.showToast('Insumo variable creado');
+                    //borrar los valores de los campos
+                    setState(() {
+                      _nombreController.clear();
+                      _cantidadController.clear();
+                    });
                   }
                 },
                 child: const Text('Guardar'),

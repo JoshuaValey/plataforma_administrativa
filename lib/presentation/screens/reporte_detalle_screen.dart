@@ -17,6 +17,13 @@ class _ReporteDetalleScreenState extends State<ReporteDetalleScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detalle del Reporte'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

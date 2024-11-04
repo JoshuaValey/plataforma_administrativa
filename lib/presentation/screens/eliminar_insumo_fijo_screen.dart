@@ -26,6 +26,13 @@ class _EliminarInsumoFijoScreen extends State<EliminarInsumoFijoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Eliminar Insumo Fijo'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Center(
         child: Column(

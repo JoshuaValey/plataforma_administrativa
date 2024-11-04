@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/presentation/widgets/green_button.dart';
+import 'package:plataforma_administrativa/singleton.dart';
 
 
 class LoginScreen extends StatelessWidget {
@@ -10,6 +11,12 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plataforma Limpia y Verde'),
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
+          color: Colors.white,
+          onPressed: () {
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -49,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                   GreenButton(
                       label: 'Iniciar Sesión',
                       onPressed: () {
-                        
+                       Singleton.showToast('Bienvenido'); 
                         Navigator.pushNamed(context, '/main_screen');
                       })
                 ],

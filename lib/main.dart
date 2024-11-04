@@ -75,6 +75,7 @@ class MyApp extends StatelessWidget {
         '/seleccionar_operario_screen': (context) => const SeleccionarOperarioScreen(),
         '/editar_operario_screen': (context) => const EditarOperarioScreen(),
         '/eliminar_operario_screen': (context) => const EliminarOperarioScreen(),
+        '/login_screen': (context) => const LoginScreen(),
 
       },
       home: const LoginScreen(),

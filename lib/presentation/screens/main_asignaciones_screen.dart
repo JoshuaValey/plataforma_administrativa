@@ -10,6 +10,13 @@ class MainAsignacionesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Asignaciones'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Center(
         child: GridView.count(

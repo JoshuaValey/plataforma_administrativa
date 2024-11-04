@@ -26,6 +26,13 @@ class _EliminarInsumoVariableScreen extends State<EliminarInsumoVariableScreen> 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Eliminar Insumo Variable'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Center(
         child: Column(

@@ -85,6 +85,13 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Editar Operario'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
