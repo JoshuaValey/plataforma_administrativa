@@ -16,7 +16,7 @@ class EditarOperarioScreen extends StatefulWidget {
 }
 
 class _EditarOperarioScreen extends State<EditarOperarioScreen> {
-  final _formKey = GlobalKey<FormState>();
+ final _formKey = GlobalKey<FormState>();
   final _documentoController = TextEditingController();
   final _nombresController = TextEditingController();
   final _apellidosController = TextEditingController();
@@ -25,16 +25,44 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
   final _sexoController = TextEditingController();
   final _jornadaController = TextEditingController();
   final _empresaController = TextEditingController();
-  final _idProyectoActualController = TextEditingController();
   final _fechaNacimientoController = TextEditingController();
   final _fechaInicioLaboresController = TextEditingController();
+  final _idController = TextEditingController();
+  final _idProyectoActualController = TextEditingController();
 
   DateTime? _fechaNacimiento;
   DateTime? _fechaInicioLabores;
-
-  // Instancia de api service. 
+  bool isChecked = false;
 
   ApiService apiService = ApiService(url: Singleton.linkApiService);
+
+  
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Operario operario = ModalRoute.of(context)!.settings.arguments as Operario;
+      
+      // Inicializar controladores y variables con datos del operario
+      _idController.text = operario.id!;
+      _documentoController.text = operario.documentoIdentificacion;
+      _nombresController.text = operario.nombres;
+      _apellidosController.text = operario.apellidos;
+      _nacionalidadController.text = operario.nacionalidad;
+      _rolController.text = operario.rol;
+      _sexoController.text = operario.sexo;
+      _jornadaController.text = operario.jornada;
+      _empresaController.text = operario.empresa;
+      _fechaInicioLabores = DateTime.parse(operario.fechaInicioLabores.toString().replaceAll('Z', ''));
+      _fechaInicioLaboresController.text = _fechaInicioLabores.toString(); // Formatear si es necesario
+      _fechaNacimiento = DateTime.parse(operario.fechaNacimiento.toString().replaceAll('Z', ''));
+      _fechaNacimientoController.text = _fechaNacimiento.toString(); // Formatear si es necesario
+      _idProyectoActualController.text = operario.idProyectoActual!;
+      isChecked = operario.isChecked;
+    });
+  }
+
 
   // Función para seleccionar una fecha
   Future<void> _selectDate(BuildContext context, Function(DateTime) onDatePicked) async {
@@ -52,27 +80,7 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
   @override
   Widget build(BuildContext context) {
 
-  Operario operario = ModalRoute.of(context)!.settings.arguments as Operario;
-  _documentoController.text = operario.documentoIdentificacion;
-  _nombresController.text = operario.nombres;
-  _apellidosController.text = operario.apellidos;
-  _nacionalidadController.text = operario.nacionalidad;
-  _rolController.text = operario.rol;
-  _sexoController.text = operario.sexo;
-  _jornadaController.text = operario.jornada;
-  _empresaController.text = operario.empresa;
-  setState(() {
-    _fechaInicioLaboresController.text = operario.fechaInicioLabores.toString().replaceAll('Z', '');
-    _fechaInicioLabores = DateTime.parse(operario.fechaInicioLabores.toString().replaceAll('Z', ''));
-  });
-  setState(() {
-    _fechaNacimientoController.text = operario.fechaNacimiento.toString().replaceAll('Z', '');
-    _fechaNacimiento = DateTime.parse(operario.fechaNacimiento.toString().replaceAll('Z', ''));
-  });
-  //_fechaFinController.text = proyectoViejo.fechaFin.toString().replaceAll('Z', '');
-  _jornadaController.text = operario.jornada;
-  bool? isChecked = operario.isChecked; // Para indicar si el operario está activo
-
+  
       
     return Scaffold(
       appBar: AppBar(
@@ -236,7 +244,7 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Operario nuevoOperario = Operario(
-                      id: operario.id,
+                      id: _idController.text,
                       documentoIdentificacion: _documentoController.text,
                       nombres: _nombresController.text,
                       apellidos: _apellidosController.text,
@@ -247,7 +255,7 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
                       fechaInicioLabores: _fechaInicioLabores!,
                       jornada: _jornadaController.text,
                       empresa: _empresaController.text,
-                      idProyectoActual: operario.idProyectoActual,
+                      idProyectoActual: _idProyectoActualController.text,
                       isChecked: isChecked,
                     );
                     // Aquí implementar API
@@ -274,7 +282,6 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
     _sexoController.dispose();
     _jornadaController.dispose();
     _empresaController.dispose();
-    _idProyectoActualController.dispose();
     super.dispose();
   }
 }
