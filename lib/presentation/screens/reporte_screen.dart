@@ -32,7 +32,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
 
 
   Future<String?> _showDateFilterDialog() async {
-    DateTime? selectedDate;
     String? formattedDate;
 
     return showDialog<String>(
@@ -50,7 +49,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
                 lastDate: DateTime(2101),
               );
               if (pickedDate != null) {
-                selectedDate = pickedDate;
                 formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
                 // Actualiza el estado del diálogo para mostrar la fecha seleccionada
                 (context as Element).markNeedsBuild();

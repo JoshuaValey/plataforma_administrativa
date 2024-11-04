@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/Repository/operario.dart';
-import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
@@ -61,20 +60,6 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
       _idProyectoActualController.text = operario.idProyectoActual!;
       isChecked = operario.isChecked;
     });
-  }
-
-
-  // Función para seleccionar una fecha
-  Future<void> _selectDate(BuildContext context, Function(DateTime) onDatePicked) async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1950),
-      lastDate: DateTime(2100),
-    );
-    if (pickedDate != null) {
-      onDatePicked(pickedDate);
-    }
   }
 
   @override

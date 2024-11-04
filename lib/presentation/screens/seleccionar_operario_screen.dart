@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/Repository/operario.dart';
 import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
@@ -31,7 +28,6 @@ List<Operario>? operarios;
 
   @override
   Widget build(BuildContext context) {
-    final proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Operarios"),

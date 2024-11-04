@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/Repository/insumo_fijo.dart';
 import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
-import 'package:plataforma_administrativa/presentation/widgets/green_button.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
 class SeleccionarInsumoFijoScreen extends StatefulWidget {
@@ -31,7 +28,6 @@ List<InsumoFijo>? insumosFijos;
 
   @override
   Widget build(BuildContext context) {
-    final proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Insumos fijos"),

@@ -28,7 +28,6 @@ List<InsumoVariable>? insumosVariables;
 
   @override
   Widget build(BuildContext context) {
-    final proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Insumos variables"),

@@ -21,7 +21,7 @@ class ApiService {
     try {
       await _dio.post(url + enpointRoute, data: data);
     } catch (e) {
-      print(e);
+      throw Exception(e);
     }
   }
 
@@ -29,7 +29,7 @@ class ApiService {
     try {
       await _dio.put(url + enpointRoute, data: data);
     } catch (e) {
-      print(e);
+      throw Exception(e);
     }
   }
 
@@ -37,7 +37,7 @@ class ApiService {
     try {
       await _dio.delete(url + enpointRoute, data: data);
     } catch (e) {
-      print(e);
+      throw Exception(e);
     }
   }
 

@@ -37,18 +37,7 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
 
   ApiService apiService = ApiService(url: Singleton.linkApiService);
 
-  // Función para seleccionar una fecha
-  Future<void> _selectDate(BuildContext context, Function(DateTime) onDatePicked) async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1950),
-      lastDate: DateTime(2100),
-    );
-    if (pickedDate != null) {
-      onDatePicked(pickedDate);
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {

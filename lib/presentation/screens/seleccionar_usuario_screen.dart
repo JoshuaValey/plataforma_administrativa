@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/Repository/usuario.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/singleton.dart';
@@ -25,7 +24,6 @@ List<Usuario>? usuarios;
 
   @override
   Widget build(BuildContext context) {
-    final proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Monitores"),

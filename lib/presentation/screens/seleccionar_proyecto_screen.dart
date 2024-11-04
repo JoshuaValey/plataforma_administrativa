@@ -33,7 +33,7 @@ class _SeleccionarProyectoScreenState extends State<SeleccionarProyectoScreen> {
         filterProyectos = proyectos;
       });
     } catch (e) {
-      print(e);
+     throw Exception(e); 
     }
   }
 
