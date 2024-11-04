@@ -206,7 +206,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
             onPressed: () async {
               String? result = await _showProyectosFilterDialog();
               if (result != null) {
-                print('Filtro 1: $result');
                 reporteFiltro!.proyectoId = result;
                 // Aquí puedes manejar el valor retornado
                 _ferchReportesFiltrados(reporteFiltro!);
@@ -221,7 +220,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
             onPressed: () async {
               String? result = await _showDateFilterDialog();
               if (result != null) {
-                print('Filtro 2: $result');
                 // Aquí puedes manejar el valor retornado
                 reporteFiltro!.fechaReporte = DateTime.parse(result);
                 _ferchReportesFiltrados(reporteFiltro!);

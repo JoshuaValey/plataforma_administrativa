@@ -267,7 +267,8 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
                     );
                     // Aquí implementar API
                     apiService.updateDocument(jsonEncode(nuevoOperario.toJson()), '/operario/editar');
-                    print('Nuevo operario creado: ${nuevoOperario.nombres}');
+                    Singleton.showToast('Operario editado');
+                    Navigator.pushNamed(context, '/main_operario_screen');
                   }
                 },
                 child: const Text('Guardar'),

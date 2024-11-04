@@ -151,7 +151,8 @@ class _EditarInsumoFijoScreenState extends State<EditarInsumoFijoScreen> {
                     );
                     // API 
                     apiService.updateDocument(jsonEncode(insumoEditado.toJson()), '/insumofijo/editar');
-                    print('Insumo editado: ${insumoEditado.nombre}');
+                    Singleton.showToast('Insumo fijo editado');
+                    Navigator.pushNamed(context, '/main_insumo_fijo_screen');
                   }
                 },
                 child: const Text('Guardar'),

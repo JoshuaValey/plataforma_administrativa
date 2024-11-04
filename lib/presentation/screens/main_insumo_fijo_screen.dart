@@ -9,7 +9,7 @@ class MainInsumoFijoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Operarios'),
+        title: const Text('Insumos Fijos'),
         actions: [
           IconButton(
               onPressed: () {
