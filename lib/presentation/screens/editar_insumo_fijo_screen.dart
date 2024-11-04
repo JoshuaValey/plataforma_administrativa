@@ -15,27 +15,42 @@ class EditarInsumoFijoScreen extends StatefulWidget {
 class _EditarInsumoFijoScreenState extends State<EditarInsumoFijoScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // Controladores para los campos del formulario
+   // Controladores para los campos del formulario
+  final _idController= TextEditingController();
+  final _idProyectoController= TextEditingController();
   final _codigoController = TextEditingController();
   final _nombreController = TextEditingController();
   final _numeroController = TextEditingController();
   final _modeloController = TextEditingController();
   final _capacidadController = TextEditingController();
   final _empresaController = TextEditingController();
-  bool _estado = false;  // Estado del insumo (activo/inactivo)
+  bool _estado = false; // Inicializar _estado con un valor predeterminado
 
   // Instancia de api service
   ApiService apiService = ApiService(url: Singleton.linkApiService);
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      InsumoFijo insumoFijo = ModalRoute.of(context)!.settings.arguments as InsumoFijo;
+
+      // Asignación de valores a los controladores y al estado
+      _idController.text = insumoFijo.id!;
+      _idProyectoController.text = insumoFijo.idProyecto;
+      _codigoController.text = insumoFijo.codigo;
+      _nombreController.text = insumoFijo.nombre;
+      _numeroController.text = insumoFijo.numero ?? "";
+      _modeloController.text = insumoFijo.modelo ?? "";
+      _capacidadController.text = insumoFijo.capacidad ?? "";
+      _empresaController.text = insumoFijo.empresa;
+      _estado = insumoFijo.estado; // Asegurar que _estado tenga un valor no null
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    InsumoFijo insumoFijo = ModalRoute.of(context)!.settings.arguments as InsumoFijo;
-    _codigoController.text = insumoFijo.codigo;
-    _nombreController.text = insumoFijo.nombre;
-    _numeroController.text = insumoFijo.numero ?? "";
-    _modeloController.text = insumoFijo.modelo ?? "";
-    _capacidadController.text = insumoFijo.capacidad ?? "";
-    _empresaController.text = insumoFijo.empresa;
+    
 
     return Scaffold(
       appBar: AppBar(
@@ -117,8 +132,8 @@ class _EditarInsumoFijoScreenState extends State<EditarInsumoFijoScreen> {
                   if (_formKey.currentState!.validate()) {
                     // Editar un nuevo insumo fijo con los datos del formulario
                       InsumoFijo insumoEditado = InsumoFijo(
-                      id: insumoFijo.id,
-                      idProyecto: insumoFijo.idProyecto,
+                      id: _idController.text,
+                      idProyecto: _idProyectoController.text,
                       codigo: _codigoController.text,
                       nombre: _nombreController.text,
                       numero: _numeroController.text,
@@ -144,6 +159,7 @@ class _EditarInsumoFijoScreenState extends State<EditarInsumoFijoScreen> {
   @override
   void dispose() {
     // Limpiar los controladores cuando el widget se destruye
+    super.dispose();
     _nombreController.dispose();
     _codigoController.dispose();
     _nombreController.dispose();
@@ -151,6 +167,5 @@ class _EditarInsumoFijoScreenState extends State<EditarInsumoFijoScreen> {
     _modeloController.dispose();
     _capacidadController.dispose();
     _empresaController.dispose();
-    super.dispose();
   }
 }

@@ -23,6 +23,7 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
   final _modeloController = TextEditingController();
   final _capacidadController = TextEditingController();
   final _empresaController = TextEditingController();
+  String _idProyectoController = '';
   bool _estado = false;  // Estado del insumo (activo/inactivo)
   final bool _checked = false; // Campo booleano para "checked"
 
@@ -32,6 +33,7 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
   @override
   Widget build(BuildContext context) {
     Proyecto proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
+    _idProyectoController = proyecto.id ?? '';
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear Insumo Fijo'),
@@ -112,7 +114,7 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
                   if (_formKey.currentState!.validate()) {
                     // Crear un nuevo insumo fijo con los datos del formulario
                     InsumoFijo nuevoInsumo = InsumoFijo(
-                      idProyecto: proyecto.id,
+                      idProyecto: _idProyectoController,
                       codigo: _codigoController.text,
                       nombre: _nombreController.text,
                       numero: _numeroController.text,

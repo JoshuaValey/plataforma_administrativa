@@ -1,7 +1,7 @@
 
 class InsumoFijo {
   final String? id ;
-  final String? idProyecto;
+  final String idProyecto;
   final String codigo;
   final String nombre;
   final String? numero;
@@ -23,6 +23,8 @@ class InsumoFijo {
     required this.empresa,
     required this.estado,
   });
+
+
 
   
 
