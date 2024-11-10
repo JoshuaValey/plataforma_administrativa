@@ -213,6 +213,13 @@ List<Map<String, dynamic>> menuItemsCopia = [
       'horizontalMargin': horizontalMarginLittleCards,
       'verticalMargin': verticalMarginLittleCards,
     },
+    {
+      'routeName': '/seleccionar_asignacion_screen',
+      'iconData': Icons.delete,
+      'label': 'Desasignar usuario a proyecto',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
    /* {
       'routeName': '/seleccionar_proyecto_screen',
       'iconData': Icons.edit,
