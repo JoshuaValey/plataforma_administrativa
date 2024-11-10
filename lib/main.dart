@@ -29,12 +29,8 @@ import 'package:plataforma_administrativa/presentation/screens/seleccionar_opera
 import 'package:plataforma_administrativa/presentation/screens/editar_operario_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/eliminar_operario_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/crear_usuario_screen.dart';
-
-
-
-
-
-
+import 'package:plataforma_administrativa/presentation/screens/seleccionar_asignacion_screen.dart';
+import 'package:plataforma_administrativa/presentation/screens/eliminar_asignacion_screen.dart';
 
 
 void main() => runApp(const MyApp());
@@ -70,13 +66,15 @@ class MyApp extends StatelessWidget {
         '/seleccionar_usuario_screen':(context) => const SeleccionarUsuarioScreen(),
         '/main_asignaciones_screen': (context) => const MainAsignacionesScreen(),
         '/crear_asignacion_screen': (context) => const CrearAsignacionScreen(),
+        '/seleccionar_asignacion_screen': (context) => const SeleccionarAsignacionScreen(),
+        '/eliminar_asignacion_screen': (context) => const EliminarAsignacionScreen(),
         '/reporte_detalle_screen': (context) => const  ReporteDetalleScreen(),
         '/main_operario_screen': (context) => const MainOperarioScreen(),
         '/seleccionar_operario_screen': (context) => const SeleccionarOperarioScreen(),
         '/editar_operario_screen': (context) => const EditarOperarioScreen(),
         '/eliminar_operario_screen': (context) => const EliminarOperarioScreen(),
         '/crear_usuario_screen': (context) => const CrearUsuarioScreen(),
-
+        '/login_screen': (context) => const LoginScreen(),
 
       },
       home: const LoginScreen(),

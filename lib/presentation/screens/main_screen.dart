@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/presentation/widgets/card_main_menu.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
-
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
   @override
@@ -10,6 +9,13 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inicio'),
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () {
+            //navegar a una pantalla
+            Navigator.pushNamed(context, '/login_screen');
+          },
+        ),
       ),
       body: Center(
         child: GridView.count(

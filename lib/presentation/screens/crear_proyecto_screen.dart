@@ -5,7 +5,6 @@ import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
-
 class CrearProyectoScreen extends StatefulWidget {
   const CrearProyectoScreen({super.key});
 
@@ -26,22 +25,23 @@ class _CrearProyectoScreenState extends State<CrearProyectoScreen> {
   DateTime? _fechaInicio;
   DateTime? _fechaFin;
 
-  
-
-
   // Nueva variable para almacenar el estado del checkbox
   bool _vigente = false;
 
-  
-
   @override
   Widget build(BuildContext context) {
-
-ApiService apiService = ApiService(url: Singleton.linkApiService);
+    ApiService apiService = ApiService(url: Singleton.linkApiService);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Nuevo Proyecto'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -61,7 +61,7 @@ ApiService apiService = ApiService(url: Singleton.linkApiService);
               ),
               TextFormField(
                 controller: _descripcionController,
-                decoration: const  InputDecoration(labelText: 'Descripción'),
+                decoration: const InputDecoration(labelText: 'Descripción'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese la descripción';
@@ -71,7 +71,8 @@ ApiService apiService = ApiService(url: Singleton.linkApiService);
               ),
               TextFormField(
                 controller: _areaCoberturaController,
-                decoration: const InputDecoration(labelText: 'Área de Cobertura'),
+                decoration:
+                    const InputDecoration(labelText: 'Área de Cobertura'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese el área de cobertura';
@@ -175,11 +176,25 @@ ApiService apiService = ApiService(url: Singleton.linkApiService);
                       empresa: _empresaController.text,
                       fechaInicio: _fechaInicio!,
                       fechaFin: _fechaFin!,
-                      vigente: _vigente,  // Usamos el valor del checkbox
+                      vigente: _vigente, // Usamos el valor del checkbox
                       jornada: _jornadaController.text,
                     );
-                    // Aquí implementar API para guardar el nuevo proyecto   
-                 apiService.insertDocument(jsonEncode(nuevoProyecto.toJson()), '/proyecto/insertar');
+                    // Aquí implementar API para guardar el nuevo proyecto
+                    apiService.insertDocument(
+                        jsonEncode(nuevoProyecto.toJson()),
+                        '/proyecto/insertar');
+                    Singleton.showToast('Proyecto creado');
+                    // Borrar los valores de los campos
+                    setState(() {
+                      _nameController.clear();
+                      _descripcionController.clear();
+                      _areaCoberturaController.clear();
+                      _empresaController.clear();
+                      _fechaInicioController.clear();
+                      _fechaFinController.clear();
+                      _vigente = false;
+                      _jornadaController.clear();
+                    });
                   }
                 },
                 child: const Text('Guardar'),

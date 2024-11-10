@@ -9,7 +9,14 @@ class MainInsumoVariableScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Proyectos'),
+        title: const Text('Insumos Variables'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Center(
         child: GridView.count(

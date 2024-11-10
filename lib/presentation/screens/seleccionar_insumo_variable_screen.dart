@@ -28,10 +28,16 @@ List<InsumoVariable>? insumosVariables;
 
   @override
   Widget build(BuildContext context) {
-    final proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Insumos variables"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: FutureBuilder<List<InsumoVariable>>(

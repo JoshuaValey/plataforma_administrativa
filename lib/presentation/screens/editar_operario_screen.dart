@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/Repository/operario.dart';
-import 'package:plataforma_administrativa/Repository/proyecto.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
@@ -63,20 +62,6 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
     });
   }
 
-
-  // Función para seleccionar una fecha
-  Future<void> _selectDate(BuildContext context, Function(DateTime) onDatePicked) async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1950),
-      lastDate: DateTime(2100),
-    );
-    if (pickedDate != null) {
-      onDatePicked(pickedDate);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
 
@@ -85,6 +70,13 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Editar Operario'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -260,7 +252,8 @@ class _EditarOperarioScreen extends State<EditarOperarioScreen> {
                     );
                     // Aquí implementar API
                     apiService.updateDocument(jsonEncode(nuevoOperario.toJson()), '/operario/editar');
-                    print('Nuevo operario creado: ${nuevoOperario.nombres}');
+                    Singleton.showToast('Operario editado');
+                    Navigator.pushNamed(context, '/main_operario_screen');
                   }
                 },
                 child: const Text('Guardar'),

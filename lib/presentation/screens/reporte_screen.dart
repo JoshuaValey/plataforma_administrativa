@@ -32,7 +32,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
 
 
   Future<String?> _showDateFilterDialog() async {
-    DateTime? selectedDate;
     String? formattedDate;
 
     return showDialog<String>(
@@ -50,7 +49,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
                 lastDate: DateTime(2101),
               );
               if (pickedDate != null) {
-                selectedDate = pickedDate;
                 formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
                 // Actualiza el estado del diálogo para mostrar la fecha seleccionada
                 (context as Element).markNeedsBuild();
@@ -144,6 +142,13 @@ class _ReporteScreenState extends State<ReporteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
         title: const Text('Reportes'),
       ),
       body: Center(
@@ -199,7 +204,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
             onPressed: () async {
               String? result = await _showProyectosFilterDialog();
               if (result != null) {
-                print('Filtro 1: $result');
                 reporteFiltro!.proyectoId = result;
                 // Aquí puedes manejar el valor retornado
                 _ferchReportesFiltrados(reporteFiltro!);
@@ -214,7 +218,6 @@ class _ReporteScreenState extends State<ReporteScreen> {
             onPressed: () async {
               String? result = await _showDateFilterDialog();
               if (result != null) {
-                print('Filtro 2: $result');
                 // Aquí puedes manejar el valor retornado
                 reporteFiltro!.fechaReporte = DateTime.parse(result);
                 _ferchReportesFiltrados(reporteFiltro!);

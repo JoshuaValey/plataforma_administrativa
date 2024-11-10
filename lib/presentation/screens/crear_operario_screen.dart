@@ -37,26 +37,30 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
 
   ApiService apiService = ApiService(url: Singleton.linkApiService);
 
-  // Función para seleccionar una fecha
-  Future<void> _selectDate(BuildContext context, Function(DateTime) onDatePicked) async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1950),
-      lastDate: DateTime(2100),
-    );
-    if (pickedDate != null) {
-      onDatePicked(pickedDate);
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
       Proyecto proyecto = ModalRoute.of(context)!.settings.arguments as Proyecto;
       
     return Scaffold(
+      
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
         title: const Text('Crear Operario'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -213,6 +217,7 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
+                
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Operario nuevoOperario = Operario(
@@ -231,9 +236,23 @@ class _CrearOperarioScreenState extends State<CrearOperarioScreen> {
                     );
                     // Aquí implementar API
                     apiService.insertDocument(jsonEncode(nuevoOperario.toJson()), '/operario/insertar');
-                    print('Nuevo operario creado: ${nuevoOperario.nombres}');
+                    Singleton.showToast('Operario creado');
+                    setState(() {
+                      _documentoController.clear();
+                      _nombresController.clear();
+                      _apellidosController.clear();
+                      _nacionalidadController.clear();
+                      _rolController.clear();
+                      _sexoController.clear();
+                      _fechaNacimientoController.clear();
+                      _fechaInicioLaboresController.clear();
+                      _jornadaController.clear();
+                      _empresaController.clear();
+                      _isChecked = false;
+                    });
                   }
                 },
+               
                 child: const Text('Guardar'),
               ),
             ],

@@ -25,6 +25,13 @@ class _EliminarProyectoScreenState extends State<EliminarProyectoScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
         title: const Text('Eliminar proyecto'),
       ),
       body: Center(

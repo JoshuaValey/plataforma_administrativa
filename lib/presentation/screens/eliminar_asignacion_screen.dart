@@ -1,20 +1,19 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:plataforma_administrativa/Repository/asignacion.dart';
-import 'package:plataforma_administrativa/Repository/usuario.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/presentation/widgets/green_button.dart';
 import 'package:plataforma_administrativa/presentation/widgets/red_button.dart';
 import 'package:plataforma_administrativa/singleton.dart';
 
-class CrearAsignacionScreen extends StatefulWidget {
-  const CrearAsignacionScreen({super.key});
+class EliminarAsignacionScreen extends StatefulWidget {
+  const EliminarAsignacionScreen({super.key});
 
   @override
-  State<CrearAsignacionScreen> createState() => _CrearAsignacionScreen();
+  State<EliminarAsignacionScreen> createState() => _EliminarAsignacionScreen();
 }
 
-class _CrearAsignacionScreen extends State<CrearAsignacionScreen> {
+class _EliminarAsignacionScreen extends State<EliminarAsignacionScreen> {
 
   // Instancia de api service
   ApiService apiService = ApiService(url: Singleton.linkApiService);
@@ -22,11 +21,11 @@ class _CrearAsignacionScreen extends State<CrearAsignacionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Usuario usuario = ModalRoute.of(context)!.settings.arguments as Usuario;
+    Asignacion asignacion = ModalRoute.of(context)!.settings.arguments as Asignacion;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Asignar usuario a proyecto'),
+        title: const Text('Eliminar Asignacion'),
         actions: [
           IconButton(
               onPressed: () {
@@ -41,19 +40,18 @@ class _CrearAsignacionScreen extends State<CrearAsignacionScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Center(
-              child: Text("Confirme la asignacion por favor", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+              child: Text("Esta seguro de eliminar la asignación?", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
               ),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  GreenButton(label: 'Si', onPressed: (){ 
-                    Asignacion nuevaAsignacion = Asignacion(idUsuario: usuario.id, idProyecto: Singleton.proyectoSeleccionado);
-                    apiService.insertDocument(jsonEncode(nuevaAsignacion.toJson()), '/asignacion/insertar');
+                  RedButton(label: 'Si', onPressed: (){ 
+                    apiService.deleteDocument(jsonEncode(asignacion.toJson()), '/asignacion/eliminar');
                     Navigator.pushNamed(context, '/main_screen');
                   }),
                   const SizedBox(width: 20,),
-                  RedButton(label: 'No', onPressed: (){ Navigator.pushNamed(context, '/main_screen'); }),
+                  GreenButton(label: 'No', onPressed: (){ Navigator.pushNamed(context, '/main_screen'); }),
                   
                 ],          
             ),

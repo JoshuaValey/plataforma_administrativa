@@ -9,7 +9,8 @@ class EditarInsumoVariableScreen extends StatefulWidget {
   const EditarInsumoVariableScreen({super.key});
 
   @override
-  State<EditarInsumoVariableScreen> createState() => _EditarInsumoVariableScreen();
+  State<EditarInsumoVariableScreen> createState() =>
+      _EditarInsumoVariableScreen();
 }
 
 class _EditarInsumoVariableScreen extends State<EditarInsumoVariableScreen> {
@@ -19,19 +20,26 @@ class _EditarInsumoVariableScreen extends State<EditarInsumoVariableScreen> {
   final _nombreController = TextEditingController();
   final _cantidadController = TextEditingController();
 
-
   // Instancia de api service
   ApiService apiService = ApiService(url: Singleton.linkApiService);
 
   @override
   Widget build(BuildContext context) {
-    InsumoVariable  insumoVariable =  ModalRoute.of(context)!.settings.arguments as InsumoVariable;
+    InsumoVariable insumoVariable =
+        ModalRoute.of(context)!.settings.arguments as InsumoVariable;
     _nombreController.text = insumoVariable.nombre;
     _cantidadController.text = insumoVariable.cantidad.toString();
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Editar Insumo Variable'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -42,7 +50,8 @@ class _EditarInsumoVariableScreen extends State<EditarInsumoVariableScreen> {
               // Campo de Nombre
               TextFormField(
                 controller: _nombreController,
-                decoration: const InputDecoration(labelText: 'Nombre del Insumo'),
+                decoration:
+                    const InputDecoration(labelText: 'Nombre del Insumo'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese el nombre del insumo';
@@ -66,7 +75,7 @@ class _EditarInsumoVariableScreen extends State<EditarInsumoVariableScreen> {
                 },
               ),
               // Checkbox para "checked"
-             
+
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
@@ -79,9 +88,14 @@ class _EditarInsumoVariableScreen extends State<EditarInsumoVariableScreen> {
                       cantidad: int.parse(_cantidadController.text),
                       checked: insumoVariable.checked,
                     );
-                    // API 
-                    var response = apiService.updateDocument(jsonEncode(insumoEditado.toJson()), '/insumovariable/editar');
-                    print('Insumo editado: ${insumoEditado.nombre}');
+                    // API
+                    apiService.updateDocument(
+                        jsonEncode(insumoEditado.toJson()),
+                        '/insumovariable/editar');
+                    Singleton.showToast('Insumo variable editado');
+                    //borrar los valores de los campos
+                    Navigator.pushNamed(
+                        context, '/main_insumo_variable_screen');
                   }
                 },
                 child: const Text('Guardar'),

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/Repository/operario.dart';
 import 'package:plataforma_administrativa/api_service.dart';
 import 'package:plataforma_administrativa/presentation/widgets/green_button.dart';
@@ -26,6 +25,13 @@ class _EliminarOperarioScreen extends State<EliminarOperarioScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
         title: const Text('Eliminar Operario'),
       ),
       body: Center(

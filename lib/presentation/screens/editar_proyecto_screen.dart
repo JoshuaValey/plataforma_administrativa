@@ -26,38 +26,48 @@ class _EditarProyectoScreenState extends State<EditarProyectoScreen> {
   DateTime? _fechaFin;
   bool _vigente = false;
 
-@override
-void initState() {
-  super.initState();
+  @override
+  void initState() {
+    super.initState();
     // Obtener los datos del proyecto pasado por argumentos
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Proyecto proyectoViejo = ModalRoute.of(context)!.settings.arguments as Proyecto;
+      Proyecto proyectoViejo =
+          ModalRoute.of(context)!.settings.arguments as Proyecto;
 
       // Asignación inicial de los valores a los controladores y variables
       _nameController.text = proyectoViejo.name;
       _descripcionController.text = proyectoViejo.descripcion;
       _areaCoberturaController.text = proyectoViejo.areaCobertura;
       _empresaController.text = proyectoViejo.empresa;
-      _fechaInicio = DateTime.parse(proyectoViejo.fechaInicio.toString().replaceAll('Z', ''));
-      _fechaInicioController.text = _fechaInicio.toString(); // Puedes formatear esto para mejor presentación
-      _fechaFin = DateTime.parse(proyectoViejo.fechaFin.toString().replaceAll('Z', ''));
-      _fechaFinController.text = _fechaFin.toString(); // Puedes formatear esto también
+      _fechaInicio = DateTime.parse(
+          proyectoViejo.fechaInicio.toString().replaceAll('Z', ''));
+      _fechaInicioController.text = _fechaInicio
+          .toString(); // Puedes formatear esto para mejor presentación
+      _fechaFin =
+          DateTime.parse(proyectoViejo.fechaFin.toString().replaceAll('Z', ''));
+      _fechaFinController.text =
+          _fechaFin.toString(); // Puedes formatear esto también
       _jornadaController.text = proyectoViejo.areaCobertura;
       _vigente = proyectoViejo.vigente; // Asignar el valor del checkbox
     });
-}
-  
+  }
 
   @override
   Widget build(BuildContext context) {
-  
-  ApiService apiService = ApiService(url: Singleton.linkApiService);
-  Proyecto proyectoViejo = ModalRoute.of(context)!.settings.arguments as Proyecto;
- 
+    ApiService apiService = ApiService(url: Singleton.linkApiService);
+    Proyecto proyectoViejo =
+        ModalRoute.of(context)!.settings.arguments as Proyecto;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Editar Proyecto'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -77,7 +87,7 @@ void initState() {
               ),
               TextFormField(
                 controller: _descripcionController,
-                decoration: const  InputDecoration(labelText: 'Descripción'),
+                decoration: const InputDecoration(labelText: 'Descripción'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese la descripción';
@@ -87,7 +97,8 @@ void initState() {
               ),
               TextFormField(
                 controller: _areaCoberturaController,
-                decoration: const InputDecoration(labelText: 'Área de Cobertura'),
+                decoration:
+                    const InputDecoration(labelText: 'Área de Cobertura'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese el área de cobertura';
@@ -110,7 +121,6 @@ void initState() {
                 decoration: const InputDecoration(labelText: 'Fecha de Inicio'),
                 readOnly: true,
                 onTap: () async {
-                  
                   DateTime? pickedDate = await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
@@ -193,12 +203,15 @@ void initState() {
                       empresa: _empresaController.text,
                       fechaInicio: _fechaInicio!,
                       fechaFin: _fechaFin!,
-                      vigente: _vigente,  // Usamos el valor del checkbox
+                      vigente: _vigente, // Usamos el valor del checkbox
                       jornada: _jornadaController.text,
                     );
-                    // Aquí implementar API para guardar el nuevo proyecto   
-                  var resultado = apiService.updateDocument(jsonEncode(proyectoActualizado.toJson()), '/proyecto/editar');
-                  print(resultado);
+                    // Aquí implementar API para guardar el nuevo proyecto
+                    apiService.updateDocument(
+                        jsonEncode(proyectoActualizado.toJson()),
+                        '/proyecto/editar');
+                    Singleton.showToast('Proyecto editado');
+                    Navigator.pushNamed(context, '/main_proyecto_screen');
                   }
                 },
                 child: const Text('Guardar'),

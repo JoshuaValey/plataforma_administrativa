@@ -25,7 +25,7 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
   final _empresaController = TextEditingController();
   String _idProyectoController = '';
   bool _estado = false;  // Estado del insumo (activo/inactivo)
-  final bool _checked = false; // Campo booleano para "checked"
+  bool _checked = false; // Campo booleano para "checked"
 
   // Instancia de api service
   ApiService apiService = ApiService(url: Singleton.linkApiService);
@@ -37,6 +37,13 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear Insumo Fijo'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -126,7 +133,20 @@ class _CrearInsumoFijoScreenState extends State<CrearInsumoFijoScreen> {
                     );
                     // API 
                     apiService.insertDocument(jsonEncode(nuevoInsumo.toJson()), '/insumofijo/insertar');
-                    print('Nuevo insumo creado: ${nuevoInsumo.nombre}');
+                    Singleton.showToast('Insumo fijo creado');
+
+                   //borrar los valores de los campos
+                   setState(() {
+                     _codigoController.clear();
+                    _nombreController.clear();
+                    _numeroController.clear();
+                    _modeloController.clear();
+                    _capacidadController.clear();
+                    _empresaController.clear();
+                    _estado = false;
+                    _checked = false;
+                   });
+                     
                   }
                 },
                 child: const Text('Guardar'),
