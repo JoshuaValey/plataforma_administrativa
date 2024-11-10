@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       if (usuario.isEmpty || contrasenia.isEmpty) {
                         // Validación simple
-                        //Singleton.showToast('Por favor ingrese usuario y contraseña');
+                        Singleton.showToast('Por favor ingrese usuario y contraseña');
                         return;
                       }
 
@@ -100,13 +100,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Llamar a la API o hacer alguna acción con los datos
                       apiService.login(usuarioLogin, '/usuario/iniciarsesion').then((response) {
                         if (response.rol == "Admin") {
-                          //Singleton.showToast('Bienvenido');
                           Navigator.pushNamed(context, '/main_screen');
+                          Singleton.showToast('Bienvenido');
                         } else {
-                          //Singleton.showToast('Credenciales incorrectas');
+                          Singleton.showToast('Credenciales incorrectas');
                         }
                       }).catchError((e) {
-                        //Singleton.showToast('Error al intentar iniciar sesión');
+                        Singleton.showToast('Error al intentar iniciar sesión');
                       });
                     },
                   ),

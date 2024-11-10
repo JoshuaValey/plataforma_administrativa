@@ -35,6 +35,13 @@ class _CrearUsuarioScreen extends State<CrearUsuarioScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear Usuario'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main_screen');
+              },
+              icon: const Icon(Icons.home))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -99,7 +106,14 @@ class _CrearUsuarioScreen extends State<CrearUsuarioScreen> {
                     );
                     // API 
                     apiService.insertDocument(jsonEncode(nuevoUsuario.toJson()), '/usuario/registrar');
-                    print('Nuevo usuario creado: ${nuevoUsuario.nombreUsuario}');
+                    Singleton.showToast('Usuario creado');
+                    setState(() {
+                     _nombreUsuarioController.clear();
+                    _contraseniaController.clear();
+                    _rolSeleccionado = null; 
+                    });
+                    
+                    
                   }
                 },
                 child: const Text('Guardar'),
