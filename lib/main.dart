@@ -28,7 +28,7 @@ import 'package:plataforma_administrativa/presentation/screens/main_operario_scr
 import 'package:plataforma_administrativa/presentation/screens/seleccionar_operario_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/editar_operario_screen.dart';
 import 'package:plataforma_administrativa/presentation/screens/eliminar_operario_screen.dart';
-
+import 'package:plataforma_administrativa/presentation/screens/crear_usuario_screen.dart';
 
 
 
@@ -75,6 +75,8 @@ class MyApp extends StatelessWidget {
         '/seleccionar_operario_screen': (context) => const SeleccionarOperarioScreen(),
         '/editar_operario_screen': (context) => const EditarOperarioScreen(),
         '/eliminar_operario_screen': (context) => const EliminarOperarioScreen(),
+        '/crear_usuario_screen': (context) => const CrearUsuarioScreen(),
+
 
       },
       home: const LoginScreen(),
