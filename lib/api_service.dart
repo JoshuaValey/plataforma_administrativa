@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:plataforma_administrativa/Repository/asignacion.dart';
 import 'package:plataforma_administrativa/Repository/insumo_variable.dart';
 import 'package:plataforma_administrativa/Repository/insumo_fijo.dart';
 import 'package:plataforma_administrativa/Repository/operario.dart';
@@ -52,6 +53,23 @@ class ApiService {
         return proyectos;
       } else {
         throw Exception('Error al recibir el listado de proyectos');
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+    Future<List<Asignacion>> getAsignaciones(String enpointRoute) async {
+    try {
+      final response = await _dio.get(url + enpointRoute);
+
+      if (response.statusCode == 200) {
+        List<dynamic> body = response.data;
+        List<Asignacion> asignaciones =
+            body.map((dynamic item) => Asignacion.fromJson(item)).toList();
+        return asignaciones;
+      } else {
+        throw Exception('Error al recibir el listado de asignaciones');
       }
     } catch (e) {
       throw Exception(e);
