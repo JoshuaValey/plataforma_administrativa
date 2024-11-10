@@ -27,6 +27,13 @@ class Singleton {
 
   List<Map<String, dynamic>> menuItems = [
     {
+      'routeName': '/crear_usuario_screen',
+      'iconData': Icons.person_add,
+      'label': 'Crear Usuarios',
+      'horizontalMargin': horizontalMarginLittleCards,
+      'verticalMargin': verticalMarginLittleCards,
+    },
+    {
       'routeName': '/main_operario_screen',
       'iconData': Icons.person,
       'label': 'Operarios',

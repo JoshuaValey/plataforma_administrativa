@@ -1,7 +1,7 @@
 class Usuario {
   final String? id;
   final String nombreUsuario;
-  final String contrasenia;
+  final String? contrasenia;
   final String rol;
  
 
