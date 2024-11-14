@@ -64,7 +64,7 @@ List<Operario>? operarios;
                         arguments: operario);
                   },
                   title: Text(operario.nombres),
-                  subtitle: Text("Cantidad: ${operario.apellidos}"),
+                  subtitle: Text(operario.apellidos),
                 );
               },
             );
